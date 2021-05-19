@@ -5,7 +5,7 @@
 					<i class="icon-reorder shaded"></i>
 				</a>
 
-			  	<a class="brand" href="index.html">
+			  	<a class="brand" href="http://localhost:8080/Customer_Care_System/Admin/include/sidebar.php">
 			  		Customer Care System | Admin
 			  	</a>
 
