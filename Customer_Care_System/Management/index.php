@@ -51,7 +51,7 @@ exit();
 					<i class="icon-reorder shaded"></i>
 				</a>
 
-			  	<a class="brand" href="http://localhost:8080/Customer_Care_System/Management/index.php">
+			  	<a class="brand" href="http://localhost:8080/Customer_Care_System/Management/include/sidebar.php">
 				  Customer Care System | Management
 			  	</a>
 
