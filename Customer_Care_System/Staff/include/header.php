@@ -5,14 +5,14 @@
 					<i class="icon-reorder shaded"></i>
 				</a>
 
-			  	<a class="brand" href="index.html">
-			  		Customer Care System | Admin
+			  	<a class="brand" href="http://localhost:8080/Customer_Care_System/Staff/include/sidebar.php">
+			  		Customer Care System | Staff
 			  	</a>
 
 				<div class="nav-collapse collapse navbar-inverse-collapse">
 					<ul class="nav pull-right">
 						<li><a href="#">
-							Admin
+						Staff
 						</a></li>
 						<li class="nav-user dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
