@@ -65,6 +65,7 @@ $num1 = mysqli_num_rows($rt);
                                 <li><a href="category.php"><i class="menu-icon icon-tasks"></i> Add Category </a></li>
                                 <li><a href="subcategory.php"><i class="menu-icon icon-tasks"></i>Add Sub-Category </a></li>
                                 <li><a href="state.php"><i class="menu-icon icon-paste"></i>Add City</a></li>
+								<li><a href="userprofile.php"><i class="menu-icon icon-paste"></i>Customer Profile</a></li>
 
 							
                           
