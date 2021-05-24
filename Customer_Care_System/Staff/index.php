@@ -51,20 +51,13 @@ exit();
 					<i class="icon-reorder shaded"></i>
 				</a>
 
-			  	<a class="brand" href="http://localhost:8080/Customer_Care_System/Staff/include/sidebar.php">
+			  	<a class="brand" href="../web/portal.html">
 				  Customer Care System | Staff User
 			  	</a>
 
 				<div class="nav-collapse collapse navbar-inverse-collapse">
 				
 					<ul class="nav pull-right">
-
-						<li><a href="http://localhost:8080/Customer_Care_System/">
-						Back to Portal
-						
-						</a></li>
-
-						
 
 						
 					</ul>
