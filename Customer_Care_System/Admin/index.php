@@ -10,7 +10,7 @@ $ret=mysqli_query($con,"SELECT * FROM admin WHERE username='$username' and passw
 $num=mysqli_fetch_array($ret);
 if($num>0)
 {
-$extra="change-password.php";//
+$extra="user-logs.php";//
 $_SESSION['alogin']=$_POST['username'];
 $_SESSION['id']=$num['id'];
 $host=$_SERVER['HTTP_HOST'];
@@ -18,16 +18,18 @@ $uri=rtrim(dirname($_SERVER['PHP_SELF']),'/\\');
 header("location:http://$host$uri/$extra");
 exit();
 }
-else
-{
-$_SESSION['errmsg']="Invalid username or password";
-$extra="index.php";
-$host  = $_SERVER['HTTP_HOST'];
-$uri  = rtrim(dirname($_SERVER['PHP_SELF']),'/\\');
-header("location:http://$host$uri/$extra");
-exit();
+//else
+//{
+//$_SESSION['errmsg']="Invalid username or password";
+//$extra="index.php";
+//$host  = $_SERVER['HTTP_HOST'];
+//$uri  = rtrim(dirname($_SERVER['PHP_SELF']),'/\\');
+//header("location:http://$host$uri/$extra");
+//exit();
+//}
 }
-}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -51,7 +53,7 @@ exit();
 					<i class="icon-reorder shaded"></i>
 				</a>
 
-			  	<a class="brand" href="index.html">
+			  	<a class="brand" href="../web/portal.html">
 				  Customer Care System | Admin
 			  	</a>
 
@@ -59,14 +61,6 @@ exit();
 				
 					<ul class="nav pull-right">
 
-						<li><a href="http://localhost:8080/Customer_Care_System/">
-						Back to Portal
-						
-						</a></li>
-
-						
-
-						
 					</ul>
 				</div><!-- /.nav-collapse -->
 			</div>
