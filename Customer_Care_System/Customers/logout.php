@@ -9,5 +9,5 @@ session_unset();
 
 ?>
 <script language="javascript">
-document.location="../index.html";
+document.location="http://localhost:8080/Customer_Care_System/web/index.html";
 </script>
