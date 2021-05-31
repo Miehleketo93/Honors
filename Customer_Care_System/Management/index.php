@@ -10,7 +10,7 @@ $ret=mysqli_query($con,"SELECT * FROM admin WHERE username='$username' and passw
 $num=mysqli_fetch_array($ret);
 if($num>0)
 {
-$extra="change-password.php";//
+$extra="complaint-details.php";//
 $_SESSION['alogin']=$_POST['username'];
 $_SESSION['id']=$num['id'];
 $host=$_SERVER['HTTP_HOST'];
@@ -28,6 +28,8 @@ header("location:http://$host$uri/$extra");
 exit();
 }
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +37,7 @@ exit();
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Customer Care System | Management login</title>
+	<title>Customer Care System | Admin login</title>
 	<link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 	<link type="text/css" href="css/theme.css" rel="stylesheet">
@@ -52,13 +54,13 @@ exit();
 				</a>
 
 			  	<a class="brand" href="../web/portal.html">
-				  Customer Care System | Management
+				  Customer Care System | Admin
 			  	</a>
 
 				<div class="nav-collapse collapse navbar-inverse-collapse">
 				
 					<ul class="nav pull-right">
-						
+
 					</ul>
 				</div><!-- /.nav-collapse -->
 			</div>
