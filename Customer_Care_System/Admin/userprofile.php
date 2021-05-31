@@ -33,9 +33,24 @@ window.print();
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 <?php 
 
+
+//$cust_id = (int)$_SESSION['user_id'];
 $ret1=mysqli_query($con,"select * FROM users where id='".$_GET['uid']."'");
-while($row=mysqli_fetch_array($ret1))
-{
+//$result = mysqli_query($ret1);
+//$i=0;
+while($row=mysqli_fetch_array($ret1)) {
+//extract($row);
+//if ($i%2) {
+//  $class = 'row1';
+//} else {
+//  $class = 'row2';
+//}
+//$i += 1;
+
+
+//$ret1=mysqli_query($con,"select * FROM users where id='".$_GET['uid']."'");
+//while($row=mysqli_fetch_array($ret1))
+//{
 ?>
 
     
@@ -76,13 +91,13 @@ while($row=mysqli_fetch_array($ret1))
 
 
         <tr height="50">
-      <td><b>City:</b></td>
+      <td><b>State:</b></td>
       <td><?php echo htmlentities($row['State']); ?></td>
     </tr>
 
 
         <tr height="50">
-      <td><b>Province:</b></td>
+      <td><b>Country:</b></td>
       <td><?php echo htmlentities($row['country']); ?></td>
     </tr>
 

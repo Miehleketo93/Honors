@@ -13,20 +13,43 @@ $currentTime = date( 'd-m-Y h:i:s A', time () );
 
 if(isset($_POST['submit']))
 {
-	$category=$_POST['Add Users'];
-	$description=$_POST['description'];
+	$Employee_Id=$_POST['Employee_Id'];
+	$First_name=$_POST['First_name'];
+	$Last_Name=$_POST['Last_Name'];
+	$Password=$_POST['Password'];
+	$Phone_Number=$_POST['Phone_Number'];
+	$Staff_Email=$_POST['Staff_Email'];
+	$Staff_indicator=$_POST['Staff_indicator'];
+
+	$sql_u = "SELECT * FROM staff_user WHERE Employee_Id='$Employee_Id'";
+	$sql_e = "SELECT * FROM staff_user WHERE Staff_Email='$Staff_Email'";
+	$res_u = mysqli_query($con, $sql_u);
+	$res_e = mysqli_query($con, $sql_e);
+
+
+	if (mysqli_num_rows($res_u) > 0) {
+      $_SESSION['errmsg']="Sorry... Employee_Id already taken";
+  	}else if(mysqli_num_rows($res_e) > 0){
+  	  $_SESSION['errmsg']="Sorry... Staff_Email already taken";
+  	}else{
+
 $sql=mysqli_query($con,"insert into staff_user(Employee_Id,First_name,Last_Name,Password,Phone_Number,Staff_Email,Staff_indicator) 
 values('$Employee_Id','$First_name','$Last_Name','$Password','$Phone_Number','$Staff_Email','$Staff_indicator')");
-$_SESSION['msg']="Staff User Created !!";
 
-}
+$results = mysqli_query($con, $sql);
+           echo 'Staff User Created!!';
+           exit();
+  	}
+  }
+//$_SESSION['msg']="Staff User Created !!";
 
-if(isset($_GET['del']))
-		  {
-		          mysqli_query($con,"delete from staff_user where Employee_Id = '".$_GET['Employee_Id']."'");
-                  $_SESSION['delmsg']="Staff User deleted !!";
-		  }
 
+//if(isset($_GET['del']))
+//		  {
+//		          mysqli_query($con,"delete from staff_user where Employee_Id = '".$_GET['Employee_Id']."'");
+//                  $_SESSION['delmsg']="Staff User deleted !!";
+//		  }
+//		}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +62,28 @@ if(isset($_GET['del']))
 	<link type="text/css" href="css/theme.css" rel="stylesheet">
 	<link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
 	<link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
-</head>
+
+
+
+<script>
+function userAvailability() {
+$("#loaderIcon").show();
+jQuery.ajax({
+url: "check_availability.php",
+data:'Employee_Id='+$("#Employee_Id").val(),
+type: "POST",
+success:function(data){
+$("#user-availability-status1").html(data);
+$("#loaderIcon").hide();
+},
+error:function (){}
+});
+}
+</script>
+  </head>
+
+
+
 <body>
 <?php include('include/header.php');?>
 
@@ -60,7 +104,7 @@ if(isset($_GET['del']))
 {?>
 									<div class="alert alert-success">
 										<button type="button" class="close" data-dismiss="alert">×</button>
-									<strong>Well done!</strong>	<?php echo htmlentities($_SESSION['msg']);?><?php echo htmlentities($_SESSION['msg']="");?>
+									<strong>Staff User Created!</strong>	<?php echo htmlentities($_SESSION['msg']);?><?php echo htmlentities($_SESSION['msg']="");?>
 									</div>
 <?php } ?>
 
@@ -80,9 +124,11 @@ if(isset($_GET['del']))
 <div class="control-group">
 <label class="control-label" for="basicinput">Employee_Id</label>
 <div class="controls">
-<input type="text" placeholder="Enter Employee_Id"  name="Employee_Id" class="span8 tip" required>
+<input type="text" placeholder="Enter Employee_Id"  name="Employee_Id" onBlur="userAvailability()" class="span8 tip" required>
+<span id="user-availability-status1" style="font-size:12px;"></span>
 </div>
 </div>
+
 
 <div class="control-group">
 <label class="control-label" for="basicinput">First_name</label>
@@ -128,7 +174,7 @@ if(isset($_GET['del']))
 <div class="controls">
 <select name="Staff_indicator" class="span8 tip" required>
 <option value="">Select Staff_indicator</option> 
-<?php $query=mysqli_query($con,"select distinct Description from staff_indicator ");
+<?php $query=mysqli_query($con,"SELECT * FROM Staff_indicator");
 while($row=mysqli_fetch_array($query))
 {?>
 
