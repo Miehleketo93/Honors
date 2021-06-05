@@ -5,8 +5,8 @@
 					<i class="icon-reorder shaded"></i>
 				</a>
 
-			  	<a class="brand" href="http://localhost:8080/Customer_Care_System/Management/include/sidebar.php">
-			  		Customer Care System | Management
+				<a class="brand" href="#">
+			  		Customer Care System | Management  Portal
 			  	</a>
 
 				<div class="nav-collapse collapse navbar-inverse-collapse">
@@ -16,7 +16,7 @@
 						</a></li>
 						<li class="nav-user dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								<img src="images/user.png" class="nav-avatar" />
+								<img src="img/user.png" class="nav-avatar" />
 								<b class="caret"></b>
 							</a>
 							<ul class="dropdown-menu">
