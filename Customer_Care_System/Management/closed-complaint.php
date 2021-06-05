@@ -57,12 +57,13 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 								<table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped	 display" >
 									<thead>
 										<tr>
-											<th>Complaint No</th>
-											<th>Complainant Name</th>
+										    <th>Complaint No</th>
+											<th>Complaint Type</th>
+											<th>Category</th>
 											<th>Reg Date</th>
+											<th>Assigned To</th>
 											<th>Status</th>
-											
-											<th>Action</th>
+											<th>Send Email</th>
 											
 										
 										</tr>
@@ -71,18 +72,24 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 <tbody>
 <?php 
 $st='closed';
-$query=mysqli_query($con,"select tblcomplaints.*,users.fullName as name from tblcomplaints join users on users.id=tblcomplaints.userId where tblcomplaints.status='$st'");
+$query=mysqli_query($con,"select tblcomplaints.* ,CONCAT(first_name,' ',last_name) as Staff_Name,date(regDate) as DateLogged
+from tblcomplaints 
+left join staff_user on  tblcomplaints.Employee_Id = staff_user.Employee_Id
+where tblcomplaints.status='$st'");
 while($row=mysqli_fetch_array($query))
 {
 ?>										
 										<tr>
-											<td><?php echo htmlentities($row['complaintNumber']);?></td>
-											<td><?php echo htmlentities($row['name']);?></td>
-											<td><?php echo htmlentities($row['regDate']);?></td>
+										<td><?php echo htmlentities($row['complaintNumber']);?></td>
+											<td><?php echo htmlentities($row['complaintType']);?></td>
+											<td><?php echo htmlentities($row['subcategory']);?></td>
+											<td><?php echo htmlentities($row['DateLogged']);?></td>
+											<td><?php echo htmlentities($row['Staff_Name']);?></td>
 										
 											<td><button type="button" class="btn btn-success">Closed</button></td>
-											
-											<td>   <a href="complaint-details.php?cid=<?php echo htmlentities($row['complaintNumber']);?>"> View Details</a> 
+											<td colspan="4"> 
+											<a href="javascript:void(0);" onClick="popUpWindow('http://localhost:8080/Customer_Care_System/Management/mail_handler.php?uid=<?php echo htmlentities($row['userId']);?>');" title="Update order">
+											 <button type="button" class="btn btn-primary">Send Email</button></a></td>
 											</td>
 											</tr>
 
