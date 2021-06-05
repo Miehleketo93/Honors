@@ -141,15 +141,20 @@ while($rw=mysqli_fetch_array($ret))
 
 
 <tr>
-											<td><b>Action</b></td>
+											<td><b><b>Action</b></b></td>
 											
 											<td> 
 											<?php if($row['status']=="closed"){
 
 												} else {?>
 <a href="javascript:void(0);" onClick="popUpWindow('http://localhost:8080/Customer_Care_System/Management/updatecomplaint.php?cid=<?php echo htmlentities($row['complaintNumber']);?>');" title="Update order">
-											 <button type="button" class="btn btn-primary">Take Action</button></td>
-											</a><?php } ?></td>
+											 <button type="button" class="btn btn-primary">Take Action</button>
+											 <a href="javascript:void(0);" onClick="popUpWindow('http://localhost:8080/Customer_Care_System/Management/Assign-User.php?cid=<?php echo htmlentities($row['complaintNumber']);?>');" title="Update order">
+											 <button type="button" class="btn btn-primary">Assign</button>
+											 
+											 </td>
+											</a><?php } ?>
+											</td>
 											<td colspan="4"> 
 											<a href="javascript:void(0);" onClick="popUpWindow('http://localhost:8080/Customer_Care_System/admin/userprofile.php?uid=<?php echo htmlentities($row['userId']);?>');" title="Update order">
 											 <button type="button" class="btn btn-primary">View User Detials</button></a></td>
