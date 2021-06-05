@@ -17,7 +17,7 @@ $currentTime = date( 'd-m-Y h:i:s A', time () );
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Management| Closed Complaints</title>
+	<title>Management| InProgress Complaints</title>
 	<link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 	<link type="text/css" href="css/theme.css" rel="stylesheet">
@@ -48,20 +48,21 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 
 	<div class="module">
 							<div class="module-head">
-								<h3>Closed Complaints</h3>
+								<h3>InProgress Complaints</h3>
 							</div>
 							<div class="module-body table">
 
 
 							
-								<table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped	 display" >
+							<table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped	 display" >
 									<thead>
 										<tr>
 											<th>Complaint No</th>
-											<th>Complainant Name</th>
+											<th>Complaint Type</th>
+											<th>Category</th>
 											<th>Reg Date</th>
+											<th>Assigned To</th>
 											<th>Status</th>
-											
 											<th>Action</th>
 											
 										
@@ -71,16 +72,21 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 <tbody>
 <?php 
 $st='in process';
-$query=mysqli_query($con,"select tblcomplaints.*,users.fullName as name from tblcomplaints join users on users.id=tblcomplaints.userId where tblcomplaints.status='$st'");
+$query=mysqli_query($con,"select tblcomplaints.* ,CONCAT(first_name,' ',last_name) as Staff_Name,date(regDate) as DateLogged
+from tblcomplaints 
+left join staff_user on  tblcomplaints.Employee_Id = staff_user.Employee_Id
+where tblcomplaints.status='$st'");
 while($row=mysqli_fetch_array($query))
 {
 ?>										
 										<tr>
 											<td><?php echo htmlentities($row['complaintNumber']);?></td>
-											<td><?php echo htmlentities($row['name']);?></td>
-											<td><?php echo htmlentities($row['regDate']);?></td>
+											<td><?php echo htmlentities($row['complaintType']);?></td>
+											<td><?php echo htmlentities($row['subcategory']);?></td>
+											<td><?php echo htmlentities($row['DateLogged']);?></td>
+											<td><?php echo htmlentities($row['Staff_Name']);?></td>
 										
-											<td><button type="button" class="btn btn-warning">In Process</button></td>
+											<td><button type="button" class="btn btn-warning">In Progress</button></td>
 											
 											<td>   <a href="complaint-details.php?cid=<?php echo htmlentities($row['complaintNumber']);?>"> View Details</a> 
 											</td>
