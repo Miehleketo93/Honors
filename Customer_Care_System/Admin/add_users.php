@@ -13,43 +13,28 @@ $currentTime = date( 'd-m-Y h:i:s A', time () );
 
 if(isset($_POST['submit']))
 {
-	$Employee_Id=$_POST['Employee_Id'];
-	$First_name=$_POST['First_name'];
-	$Last_Name=$_POST['Last_Name'];
-	$Password=$_POST['Password'];
-	$Phone_Number=$_POST['Phone_Number'];
-	$Staff_Email=$_POST['Staff_Email'];
-	$Staff_indicator=$_POST['Staff_indicator'];
-
-	$sql_u = "SELECT * FROM staff_user WHERE Employee_Id='$Employee_Id'";
-	$sql_e = "SELECT * FROM staff_user WHERE Staff_Email='$Staff_Email'";
+	$username=$_POST['username'];
+	$password=md5($_POST['password']);
+	
+	
+	$sql_u = "SELECT * FROM management WHERE username='$username'";
 	$res_u = mysqli_query($con, $sql_u);
-	$res_e = mysqli_query($con, $sql_e);
+
 
 
 	if (mysqli_num_rows($res_u) > 0) {
-      $_SESSION['errmsg']="Sorry... Employee_Id already taken";
-  	}else if(mysqli_num_rows($res_e) > 0){
-  	  $_SESSION['errmsg']="Sorry... Staff_Email already taken";
+      $_SESSION['errmsg']="Sorry... username already taken";
+  
   	}else{
 
-$sql=mysqli_query($con,"insert into staff_user(Employee_Id,First_name,Last_Name,Password,Phone_Number,Staff_Email,Staff_indicator) 
-values('$Employee_Id','$First_name','$Last_Name','$Password','$Phone_Number','$Staff_Email','$Staff_indicator')");
+$sql=mysqli_query($con,"insert into management(username,password) values('$username','$password')");
 
 $results = mysqli_query($con, $sql);
            echo 'Staff User Created!!';
            exit();
   	}
   }
-//$_SESSION['msg']="Staff User Created !!";
 
-
-//if(isset($_GET['del']))
-//		  {
-//		          mysqli_query($con,"delete from staff_user where Employee_Id = '".$_GET['Employee_Id']."'");
-//                  $_SESSION['delmsg']="Staff User deleted !!";
-//		  }
-//		}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,7 +55,7 @@ function userAvailability() {
 $("#loaderIcon").show();
 jQuery.ajax({
 url: "check_availability.php",
-data:'Employee_Id='+$("#Employee_Id").val(),
+data:'username='+$("#username").val(),
 type: "POST",
 success:function(data){
 $("#user-availability-status1").html(data);
@@ -119,68 +104,22 @@ error:function (){}
 
 									<br />
 
-			<form class="form-horizontal row-fluid" name="Employee_Id" method="post" >
+			<form class="form-horizontal row-fluid" name="username" method="post" >
 									
 <div class="control-group">
-<label class="control-label" for="basicinput">Employee_Id</label>
+<label class="control-label" for="basicinput">username</label>
 <div class="controls">
-<input type="text" placeholder="Enter Employee_Id"  name="Employee_Id" onBlur="userAvailability()" class="span8 tip" required>
+<input type="text" placeholder="Enter username"  name="username" onBlur="userAvailability()" class="span8 tip" required>
 <span id="user-availability-status1" style="font-size:12px;"></span>
 </div>
 </div>
 
 
 <div class="control-group">
-<label class="control-label" for="basicinput">First_name</label>
+<label class="control-label" for="basicinput">password</label>
 <div class="controls">
-<input type="text" placeholder="Enter First_name"  name="First_name" class="span8 tip" required>
-</div>
-</div>
+<input type="password" placeholder="Enter password"  name="password" class="span8 tip" required>
 
-<div class="control-group">
-<label class="control-label" for="basicinput">Last_Name</label>
-<div class="controls">
-<input type="text" placeholder="Enter Last_Name"  name="Last_Name" class="span8 tip" required>
-</div>
-</div>
-
-
-<div class="control-group">
-<label class="control-label" for="basicinput">Password</label>
-<div class="controls">
-<input type="text" placeholder="Enter Password"  name="Password" class="span8 tip" required>
-</div>
-</div>
-
-
-<div class="control-group">
-<label class="control-label" for="basicinput">Phone_Number</label>
-<div class="controls">
-<input type="text" placeholder="Enter Phone_Number"  name="Phone_Number" class="span8 tip" required>
-</div>
-</div>
-
-
-<div class="control-group">
-<label class="control-label" for="basicinput">Staff_Email</label>
-<div class="controls">
-<input type="text" placeholder="Enter Staff_Email"  name="Staff_Email" class="span8 tip" required>
-</div>
-</div>
-
-
-<div class="control-group">
-<label class="control-label" for="basicinput">Staff_indicator</label>
-<div class="controls">
-<select name="Staff_indicator" class="span8 tip" required>
-<option value="">Select Staff_indicator</option> 
-<?php $query=mysqli_query($con,"SELECT * FROM Staff_indicator");
-while($row=mysqli_fetch_array($query))
-{?>
-
-<option value="<?php echo $row['Staff_indicator'];?>"><?php echo $row['Description'];?></option>
-<?php } ?>
-</select>
 </div>
 </div>
 
