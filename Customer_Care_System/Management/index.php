@@ -1,12 +1,12 @@
 <?php
 session_start();
 error_reporting(0);
-include("include/config.php");
+include("connection/config.php");
 if(isset($_POST['submit']))
 {
 	$username=$_POST['username'];
 	$password=md5($_POST['password']);
-$ret=mysqli_query($con,"SELECT * FROM admin WHERE username='$username' and password='$password'");
+$ret=mysqli_query($con,"SELECT * FROM management WHERE username='$username' and password='$password'");
 $num=mysqli_fetch_array($ret);
 if($num>0)
 {

@@ -1,7 +1,7 @@
 
 <?php
 session_start();
-include('include/config.php');
+include('connection/config.php');
 if(strlen($_SESSION['alogin'])==0)
 	{	
 header('location:index.php');
@@ -53,7 +53,7 @@ values('$to','$from','$first_name','$last_Name','$subject','$subject2','$message
 </head>
 <body>
 
-<?php include('include/header.php');?>
+<?php include('connection/header.php');?>
 
 	<div class="wrapper">
 		<div class="container">
@@ -120,7 +120,7 @@ values('$to','$from','$first_name','$last_Name','$subject','$subject2','$message
 	
 		</div>
 	</div>   
-<?php include('include/footer.php');?>
+<?php include('connection/footer.php');?>
 
 	<script src="scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
 	<script src="scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>

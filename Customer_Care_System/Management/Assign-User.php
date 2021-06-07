@@ -1,6 +1,7 @@
+  
 <?php
 session_start();
-include('include/config.php');
+include('connection/config.php');
 if(strlen($_SESSION['alogin'])==0)
   { 
 header('location:index.php');
@@ -15,7 +16,6 @@ echo "<script>alert('Complaint assigned successfully'); </script>";
 
 
   }
-
 
   ?>
   <!DOCTYPE html>
@@ -32,7 +32,7 @@ echo "<script>alert('Complaint assigned successfully'); </script>";
   
  
 <body>
-<?php include('include/header.php');?>
+<?php include('connection/header.php');?>
 
 	<div class="wrapper">
 		<div class="container">
@@ -82,11 +82,11 @@ while($rw=mysqli_fetch_array($ret))
       <td><b>Assign To </b></td>
       <td><select name="Employee_Id" required="required">
       <option value="">Select Employee Name</option>
-      <?php $query=mysqli_query($con,"SELECT distinct *,CONCAT(first_name,' ',last_name) as name  FROM staff_user");
+      <?php $query=mysqli_query($con,"SELECT distinct *,CONCAT(firstname,' ',lastname) as name  FROM staff");
        while($row=mysqli_fetch_array($query))
      {?>
 
-      <option value="<?php echo $row['Employee_Id'];?>"><?php echo $row['name'];?></option>
+      <option value="<?php echo $row['id'];?>"><?php echo $row['name'];?></option>
      <?php } ?>
 
     
@@ -113,7 +113,7 @@ while($rw=mysqli_fetch_array($ret))
  
 </table>
  </form>
- <?php include('include/footer.php');?>
+ <?php include('connection/footer.php');?>
 
 <script src="scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
 <script src="scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>

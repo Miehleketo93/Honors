@@ -1,7 +1,7 @@
 
 <?php
 session_start();
-include('include/config.php');
+include("connection/config.php");
 if(strlen($_SESSION['alogin'])==0)
 	{	
 header('location:index.php');
@@ -37,12 +37,12 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 </script>
 </head>
 <body>
-<?php include('include/header.php');?>
+<?php include('connection/header.php');?>
 
 	<div class="wrapper">
 		<div class="container">
 			<div class="row">
-<?php include('include/sidebar.php');?>				
+<?php include('connection/sidebar.php');?>				
 			<div class="span9">
 					<div class="content">
 
@@ -71,9 +71,9 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 								
 <tbody>
 <?php 
-$query=mysqli_query($con,"select tblcomplaints.* ,CONCAT(first_name,' ',last_name) as Staff_Name,date(regDate) as DateLogged
+$query=mysqli_query($con,"select tblcomplaints.* ,CONCAT(firstname,' ',lastname) as Staff_Name,date(tblcomplaints.regDate) as DateLogged
 from tblcomplaints 
-left join staff_user on  tblcomplaints.Employee_Id = staff_user.Employee_Id
+left join staff on  tblcomplaints.Employee_Id = staff.employee
 where tblcomplaints.status is null ");
 while($row=mysqli_fetch_array($query))
 {
@@ -105,7 +105,7 @@ while($row=mysqli_fetch_array($query))
 		</div><!--/.container-->
 	</div><!--/.wrapper-->
 
-<?php include('include/footer.php');?>
+<?php include('connection/footer.php');?>
 
 	<script src="scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
 	<script src="scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>

@@ -1,6 +1,6 @@
 <style>
 .xyz {
-	-moz-border-radius:10px;
+	
 	border:#CC9900 solid 1px;
 	background-color:#FFFFFF;
 	padding:10px;
