@@ -1,28 +1,35 @@
-
-<?php
+<?php 
 session_start();
+error_reporting(0);
 include('configuration/config.php');
-if(strlen($_SESSION['alogin'])==0)
-	{	
+if(strlen($_SESSION['login'])==0)
+  { 
 header('location:index.php');
 }
 else{
-date_default_timezone_set('Africa/Johannesburg');// change according timezone
-$currentTime = date( 'd-m-Y h:i:s A', time () );
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Staff| InProgress Complaints</title>
-	<link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
-	<link type="text/css" href="css/theme.css" rel="stylesheet">
-	<link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
-	<link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+
+    <title>Staff | Inprogress</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <!--external css-->
+    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+        
+    <!-- Custom styles for this template -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/style-responsive.css" rel="stylesheet">
+
+    <link href="assets/css/table-responsive.css" rel="stylesheet">
+
 	<script language="javascript" type="text/javascript">
 var popUpWin=0;
 function popUpWindow(URLStr, left, top, width, height)
@@ -35,28 +42,24 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 }
 
 </script>
-</head>
-<body>
-<?php include('configuration/header.php');?>
+  </head>
 
-	<div class="wrapper">
-		<div class="container">
-			<div class="row">
-<?php include('configuration/sidebar.php');?>				
-			<div class="span9">
-					<div class="content">
+  <body>
 
-	<div class="module">
-							<div class="module-head">
-								<h3>InProgress Complaints</h3>
-							</div>
-							<div class="module-body table">
+<section id="container" >
+<?php include("configuration/header.php");?>
+<?php include("configuration/sidebar.php");?>
 
-
-							
-							<table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped	 display" >
-									<thead>
-										<tr>
+<section id="main-content">
+          <section class="wrapper">
+          	<h3><i class="fa fa-angle-right"></i>Inprogess</h3>
+		  		<div class="row mt">
+			  		<div class="col-lg-12">
+                      <div class="content-panel">
+                          <section id="unseen">
+                            <table class="table table-bordered table-striped table-condensed">
+                              <thead>
+                              <tr style="text-align: center">
 											<th>Complaint No</th>
 											<th>Complaint Type</th>
 											<th>Category</th>
@@ -88,7 +91,7 @@ while($row=mysqli_fetch_array($query))
 										
 											<td><button type="button" class="btn btn-warning">In Progress</button></td>
 											
-											<td>   <a href="complaint-details.php?cid=<?php echo htmlentities($row['complaintNumber']);?>"> View Details</a> 
+											<td><a href="complaint-details.php?cid=<?php echo htmlentities($row['complaintNumber']);?>"> View Details</a> 
 											</td>
 											</tr>
 
@@ -106,21 +109,25 @@ while($row=mysqli_fetch_array($query))
 		</div><!--/.container-->
 	</div><!--/.wrapper-->
 
-<?php include('configuration/footer.php');?>
+		</section><! --/wrapper -->
+      </section><!-- /MAIN CONTENT -->
+<?php include("configuration/footer.php");?>
+  </section>
 
-	<script src="scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
-	<script src="scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
-	<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="scripts/flot/jquery.flot.js" type="text/javascript"></script>
-	<script src="scripts/datatables/jquery.dataTables.js"></script>
-	<script>
-		$(document).ready(function() {
-			$('.datatable-1').dataTable();
-			$('.dataTables_paginate').addClass("btn-group datatable-pagination");
-			$('.dataTables_paginate > a').wrapInner('<span />');
-			$('.dataTables_paginate > a:first-child').append('<i class="icon-chevron-left shaded"></i>');
-			$('.dataTables_paginate > a:last-child').append('<i class="icon-chevron-right shaded"></i>');
-		} );
-	</script>
-</body>
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="assets/js/jquery.scrollTo.min.js"></script>
+    <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+
+
+    <!--common script for all pages-->
+    <script src="assets/js/common-scripts.js"></script>
+
+    <!--script for this page-->
+    
+
+  </body>
+</html>
 <?php } ?>

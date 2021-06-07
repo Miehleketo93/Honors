@@ -1,28 +1,33 @@
-
-<?php
+<?php 
 session_start();
+error_reporting(0);
 include('configuration/config.php');
-if(strlen($_SESSION['alogin'])==0)
-	{	
+if(strlen($_SESSION['login'])==0)
+  { 
 header('location:index.php');
 }
 else{
-date_default_timezone_set('Africa/Johannesburg');// change according timezone
-$currentTime = date( 'd-m-Y h:i:s A', time () );
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Management| Closed Complaints</title>
-	<link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
-	<link type="text/css" href="css/theme.css" rel="stylesheet">
-	<link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
-	<link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+
+    <title>Staff |Closed Complaints</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <!--external css-->
+    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+        
+    <!-- Custom styles for this template -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/style-responsive.css" rel="stylesheet">
+
+    <link href="assets/css/table-responsive.css" rel="stylesheet">
 	<script language="javascript" type="text/javascript">
 var popUpWin=0;
 function popUpWindow(URLStr, left, top, width, height)
@@ -37,26 +42,20 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 </script>
 </head>
 <body>
-<?php include('configuration/header.php');?>
+<section id="container" >
+<?php include("configuration/header.php");?>
+<?php include("configuration/sidebar.php");?>
 
-	<div class="wrapper">
-		<div class="container">
-			<div class="row">
-<?php include('configuration/sidebar.php');?>				
-			<div class="span9">
-					<div class="content">
-
-	<div class="module">
-							<div class="module-head">
-								<h3>Closed Complaints</h3>
-							</div>
-							<div class="module-body table">
-
-
-							
-								<table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped	 display" >
-									<thead>
-										<tr>
+<section id="main-content">
+          <section class="wrapper">
+          	<h3><i class="fa fa-angle-right"></i>Closed Complaints</h3>
+		  		<div class="row mt">
+			  		<div class="col-lg-12">
+                      <div class="content-panel">
+                          <section id="unseen">
+                            <table class="table table-bordered table-striped table-condensed">
+                              <thead>
+                              <tr style="text-align: center">
 										    <th>Complaint No</th>
 											<th>Complaint Type</th>
 											<th>Category</th>
@@ -88,7 +87,7 @@ while($row=mysqli_fetch_array($query))
 										
 											<td><button type="button" class="btn btn-success">Closed</button></td>
 											<td colspan="4"> 
-											<a href="javascript:void(0);" onClick="popUpWindow('http://localhost:8080/Customer_Care_System/Management/mail_handler.php?uid=<?php echo htmlentities($row['userId']);?>');" title="Update order">
+											<a href="javascript:void(0);" onClick="popUpWindow('http://localhost:8080/Customer_Care_System/Staff/mail_handler.php?uid=<?php echo htmlentities($row['userId']);?>');" title="Update order">
 											 <button type="button" class="btn btn-primary">Send Email</button></a></td>
 											</td>
 											</tr>

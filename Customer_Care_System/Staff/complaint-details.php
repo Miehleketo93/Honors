@@ -1,26 +1,34 @@
-
-<?php
+<?php 
 session_start();
+error_reporting(0);
 include('configuration/config.php');
-if(strlen($_SESSION['alogin'])==0)
-	{	
+if(strlen($_SESSION['login'])==0)
+  { 
 header('location:index.php');
 }
 else{
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Staff| Complaint Details</title>
-	<link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
-	<link type="text/css" href="css/theme.css" rel="stylesheet">
-	<link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
-	<link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+
+    <title>Staff | Complaint Details</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <!--external css-->
+    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+        
+    <!-- Custom styles for this template -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/style-responsive.css" rel="stylesheet">
+
+    <link href="assets/css/table-responsive.css" rel="stylesheet">
 	<script language="javascript" type="text/javascript">
 var popUpWin=0;
 function popUpWindow(URLStr, left, top, width, height)
@@ -36,23 +44,18 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 
 </head>
 <body>
-<?php include('configuration/header.php');?>
 
-	<div class="wrapper">
-		<div class="container">
-			<div class="row">
-<?php include('configuration/sidebar.php');?>				
-			<div class="span9">
-					<div class="content">
+<section id="container" >
+<?php include("configuration/header.php");?>
+<?php include("configuration/sidebar.php");?>
 
-						
-
-
-	<div class="module">
-							<div class="module-head">
-								<h3>Complaint Details</h3>
-							</div>
-							<div class="module-body table">
+<section id="main-content">
+          <section class="wrapper">
+          	<h3><i class="fa fa-angle-right"></i>Inprogess</h3>
+		  		<div class="row mt">
+			  		<div class="col-lg-12">
+                      <div class="content-panel">
+                          <section id="unseen">
 								<table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped	 display" width="100%">
 									
 									<tbody>
@@ -106,7 +109,7 @@ if($cfile=="" || $cfile=="NULL")
   echo "File NA";
 }
 else{?>
-<a href="../users/complaintdocs/<?php echo htmlentities($row['complaintFile']);?>" target="_blank"/> View File</a>
+<a href="../Customers/complaintdocs/<?php echo htmlentities($row['complaintFile']);?>" target="_blank"/> View File</a>
 <?php } ?></td>
 </tr>
 
@@ -147,16 +150,16 @@ while($rw=mysqli_fetch_array($ret))
 											<?php if($row['status']=="closed"){
 
 												} else {?>
-<a href="javascript:void(0);" onClick="popUpWindow('http://localhost:8080/Customer_Care_System/Management/updatecomplaint.php?cid=<?php echo htmlentities($row['complaintNumber']);?>');" title="Update order">
+<a href="javascript:void(0);" onClick="popUpWindow('http://localhost:8080/Customer_Care_System/Staff/updatecomplaint.php?cid=<?php echo htmlentities($row['complaintNumber']);?>');" title="Update order">
 											 <button type="button" class="btn btn-primary">Take Action</button>
-											 <a href="javascript:void(0);" onClick="popUpWindow('http://localhost:8080/Customer_Care_System/Management/Assign-User.php?cid=<?php echo htmlentities($row['complaintNumber']);?>');" title="Update order">
+											 <a href="javascript:void(0);" onClick="popUpWindow('http://localhost:8080/Customer_Care_System/Staff/Assign-User.php?cid=<?php echo htmlentities($row['complaintNumber']);?>');" title="Update order">
 											 <button type="button" class="btn btn-primary">Assign</button>
 											 
 											 </td>
 											</a><?php } ?>
 											</td>
 											<td colspan="4"> 
-											<a href="javascript:void(0);" onClick="popUpWindow('http://localhost:8080/Customer_Care_System/admin/userprofile.php?uid=<?php echo htmlentities($row['userId']);?>');" title="Update order">
+											<a href="javascript:void(0);" onClick="popUpWindow('http://localhost:8080/Customer_Care_System/Staff/userprofile.php?uid=<?php echo htmlentities($row['userId']);?>');" title="Update order">
 											 <button type="button" class="btn btn-primary">View User Detials</button></a></td>
 											
 										</tr>

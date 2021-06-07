@@ -1,16 +1,12 @@
-<?php
+<?php 
 session_start();
 error_reporting(0);
-include('configaration/config.php');
+include('configuration/config.php');
 if(strlen($_SESSION['login'])==0)
   { 
 header('location:index.php');
 }
 else{
-date_default_timezone_set('Africa/Johannesburg');// change according timezone
-$currentTime = date( 'd-m-Y h:i:s A', time () );
-
-
 if(isset($_POST['submit']))
 {
 $sql=mysqli_query($con,"SELECT password FROM  staff where password='".md5($_POST['password'])."' && email='".$_SESSION['login']."'");
@@ -46,6 +42,7 @@ $errormsg="Old Password not match !!";
     <link rel="stylesheet" type="text/css" href="assets/js/bootstrap-daterangepicker/daterangepicker.css" />
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/style-responsive.css" rel="stylesheet">
+
   <script type="text/javascript">
 function valid()
 {
@@ -81,8 +78,8 @@ return true;
   <body>
 
   <section id="container" >
-     <?php include("configaration/header.php");?>
-      <?php include("configaration/sidebar.php");?>
+     <?php include("configuration/header.php");?>
+      <?php include("configuration/sidebar.php");?>
       <section id="main-content">
           <section class="wrapper">
           	<h3><i class="fa fa-angle-right"></i> Change Password</h3>
@@ -144,7 +141,7 @@ return true;
           	
 		</section><! --/wrapper -->
       </section><!-- /MAIN CONTENT -->
-    <?php include("configaration/footer.php");?>
+    <?php include("configuration/footer.php");?>
   </section>
 
     <!-- js placed at the end of the document so the pages load faster -->
