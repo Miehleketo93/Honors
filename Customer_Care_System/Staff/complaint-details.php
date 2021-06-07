@@ -1,7 +1,7 @@
 
 <?php
 session_start();
-include('include/config.php');
+include('configuration/config.php');
 if(strlen($_SESSION['alogin'])==0)
 	{	
 header('location:index.php');
@@ -15,7 +15,7 @@ else{
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Staff User| Complaint Details</title>
+	<title>Staff| Complaint Details</title>
 	<link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 	<link type="text/css" href="css/theme.css" rel="stylesheet">
@@ -36,12 +36,12 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 
 </head>
 <body>
-<?php include('include/header.php');?>
+<?php include('configuration/header.php');?>
 
 	<div class="wrapper">
 		<div class="container">
 			<div class="row">
-<?php include('include/sidebar.php');?>				
+<?php include('configuration/sidebar.php');?>				
 			<div class="span9">
 					<div class="content">
 
@@ -141,15 +141,20 @@ while($rw=mysqli_fetch_array($ret))
 
 
 <tr>
-											<td><b>Action</b></td>
+											<td><b><b>Action</b></b></td>
 											
 											<td> 
 											<?php if($row['status']=="closed"){
 
 												} else {?>
-<a href="javascript:void(0);" onClick="popUpWindow('http://localhost:8080/Customer_Care_System/admin/updatecomplaint.php?cid=<?php echo htmlentities($row['complaintNumber']);?>');" title="Update order">
-											 <button type="button" class="btn btn-primary">Take Action</button></td>
-											</a><?php } ?></td>
+<a href="javascript:void(0);" onClick="popUpWindow('http://localhost:8080/Customer_Care_System/Management/updatecomplaint.php?cid=<?php echo htmlentities($row['complaintNumber']);?>');" title="Update order">
+											 <button type="button" class="btn btn-primary">Take Action</button>
+											 <a href="javascript:void(0);" onClick="popUpWindow('http://localhost:8080/Customer_Care_System/Management/Assign-User.php?cid=<?php echo htmlentities($row['complaintNumber']);?>');" title="Update order">
+											 <button type="button" class="btn btn-primary">Assign</button>
+											 
+											 </td>
+											</a><?php } ?>
+											</td>
 											<td colspan="4"> 
 											<a href="javascript:void(0);" onClick="popUpWindow('http://localhost:8080/Customer_Care_System/admin/userprofile.php?uid=<?php echo htmlentities($row['userId']);?>');" title="Update order">
 											 <button type="button" class="btn btn-primary">View User Detials</button></a></td>
@@ -169,7 +174,7 @@ while($rw=mysqli_fetch_array($ret))
 		</div><!--/.container-->
 	</div><!--/.wrapper-->
 
-<?php include('include/footer.php');?>
+<?php include('configuration/footer.php');?>
 
 	<script src="scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
 	<script src="scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
