@@ -1,42 +1,62 @@
 <?php 
+
+use PHPMailer\PHPMailer\PHPMailer;
+//use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+require 'vendor/autoload.php';
 session_start();
 error_reporting(0);
 include('configuration/config.php');
+require("vendor/autoload.php");
 if(strlen($_SESSION['login'])==0)
   { 
 header('location:index.php');
 }
 else{
+	
 
-if(isset($_POST['submit']))
-{
-    $to=$_POST['To'];
-	$from =$_POST['From'];
-    $first_name = $_POST['first_name'];
-	$last_Name=$_POST['fast_Name'];
-	$subject=$_POST['subject'];
-    $subject2=$_POST['subject2'];
-	$message =$_POST['message'];
-    $message2 =$_POST['message2'];
-    $headers=$_POST['headers'];
-	$headers2=$_POST['headers2'];
-    $User=$_POST['user'];
+	if (isset($_POST['submit'])) {
 
-    mail($to,$subject,$message,$headers);
-    mail($from,$subject2,$message2,$headers2); // sends a copy of the message to the sender
-    echo "Mail Sent. Thank you " . $first_name . ", we will contact you shortly.";
+		$email = $_POST['email'];
+		$subject = $_POST['subject'];
+		$query = $_POST['query'];
+        $message = $_POST['message'];
 
-$sql=mysqli_query($con,"insert into email(To,From,first_name,fast_Name,subject,subject2,message,message2,headers,headers2) 
-values('$to','$from','$first_name','$last_Name','$subject','$subject2','$message', $message2','$headers','$headers2',' $User')");
+		$mail = new PHPMailer();
+		$mail->IsSMTP();
+		$mail->Host = "smtp.gmail.com"; // Enter your host here
+		$mail->SMTPAuth = true;
+		$mail->Username = "miehleketo93@gmail.com"; // Enter your email here
+		$mail->Password = ""; //Enter your passwrod here
+		$mail->Port = 587;
+		$mail->IsHTML(true);
+		$mail->From = "miehleketo93@gmail.com";
+		$mail->FromName = "Customer Care System";
 
-}
+		$mail->Subject = $subject;
 
+		$mail->Message = $message;
+		//$message = str_replace('%subject%', $subject, $message);
+		//$message = str_replace('%message%', $query, $message);
+		$mail->msgHTML($message);
+		$mail->AddAddress($email);
+		$mail->AddAddress('u11242796@tuks.co.za'); //admin email
+		if (!$mail->Send()) {
+			echo "Mailer Error: " . $mail->ErrorInfo;
+		} else {
+			header("closed-complaint.php");
+		}
+	}
+	
+	}
 ?>
 
-
-    <!DOCTYPE html>
+<!DOCTYPE html>
     <html lang="en">
     <head>
+  
+
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Staff| Send mail</title>
@@ -78,17 +98,27 @@ values('$to','$from','$first_name','$last_Name','$subject','$subject2','$message
 
 <form class="form-horizontal row-fluid" name="mail_handler" method="post" >
 
+<?php $st='closed';
+$query=mysqli_query($con,"SELECT a.*,Employee_id,userEmail,CONCAT(subcategory,' ',complaintType) as Subject FROM complaintremark a  
+join tblcomplaints b on (a.complaintNumber = b.complaintNumber)
+join users c on (b.userId = c.id)
+where  a.status='$st' and Employee_Id ='".$_SESSION['id']."' ");
+while($row=mysqli_fetch_array($query))
+{
+	
+?>
+
 <div class="control-group">
 <label class="control-label" for="basicinput">To</label>
 <div class="controls">
-<input type="text" placeholder="email"  name="to" class="span8 tip" required >
+<input type="text" placeholder="email"  name="to" class="span8 tip" required  value="<?php echo htmlentities($row['userEmail']);?>" >
 </div>
 
 
 <div class="control-group">
 <label class="control-label" for="basicinput">From</label>
 <div class="controls">
-<input type="text" placeholder="email"  name="from" class="span8 tip" required>
+<input type="text" placeholder="email"  name="from"  value = "u11242796@tuks.co.za" class="span8 tip" required>
 </div>
 
 
@@ -96,15 +126,17 @@ values('$to','$from','$first_name','$last_Name','$subject','$subject2','$message
 <div class="control-group">
 <label class="control-label" for="basicinput">Subject</label>
 <div class="controls">
-<input type="text" placeholder="subject"  name="subjrct" class="span8 tip" required>
+<input type="text" placeholder="subject"  name="subject" class="span8 tip" required value="<?php echo htmlentities($row['Subject']);?>" >
 </div>
 
 
 <div class="control-group">
 <label class="control-label" for="basicinput">Message</label>
 <div class="controls">
-<textarea class="span8" name="message" rows="5"></textarea>
+<textarea class="span8" name="message" rows="5"> <?php echo htmlentities($row['remark']);?> </textarea>
 </div>
+
+
 
 <div class="control-group">
 <div class="controls">
@@ -115,7 +147,8 @@ values('$to','$from','$first_name','$last_Name','$subject','$subject2','$message
 </form>
 </div>
 </div>
-	
+
+<?php } ?>
 		</div>
 	</div>   
 <?php include('configuration/footer.php');?>
@@ -135,4 +168,3 @@ values('$to','$from','$first_name','$last_Name','$subject','$subject2','$message
 		} );
 	</script>
 </body>
-<?php } ?>

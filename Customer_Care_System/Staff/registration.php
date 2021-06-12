@@ -105,7 +105,7 @@ echo htmlentities($msg);
     <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
     <script type="text/javascript" src="assets/js/jquery.backstretch.min.js"></script>
     <script>
-        $.backstretch("assets/img/staff.jpg", {speed: 500});
+        $.backstretch("assets/img/staff2.jpg", {speed: 500});
     </script>
 <div class="footer">
 		<div class="container">
