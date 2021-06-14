@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Generation Time: Jun 07, 2021 at 10:44 PM
+-- Generation Time: Jun 13, 2021 at 08:40 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -60,7 +60,17 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id`, `categoryName`, `categoryDescription`, `creationDate`, `updationDate`) VALUES
-(1, 'Facial Products', 'Facial Products', '2021-05-30 15:16:00', '');
+(1, 'Transact', 'Transactions', '2021-06-12 19:42:40', ''),
+(2, 'Bank Accounts', 'Personal Banking', '2021-06-12 19:52:58', ''),
+(3, 'Digital Banking', 'Online Services', '2021-06-12 19:52:58', ''),
+(4, 'Savings And Investments', 'Savings', '2021-06-12 19:52:58', ''),
+(5, 'International Banking', 'International Solutions', '2021-06-12 19:52:58', ''),
+(6, 'Financial Planning', 'Financial Wellness', '2021-06-12 19:52:58', ''),
+(7, 'Borrow', 'Credit', '2021-06-12 19:52:58', ''),
+(8, 'Forex', 'Foreign Exchange', '2021-06-12 19:52:58', ''),
+(9, 'Family Banking', 'Future Banking', '2021-06-12 19:52:58', ''),
+(10, 'Rewards', 'Banking Rewards', '2021-06-12 19:52:58', ''),
+(11, 'Insurance', 'Protect Your Future', '2021-06-12 20:38:51', '');
 
 -- --------------------------------------------------------
 
@@ -81,49 +91,8 @@ CREATE TABLE `complaintremark` (
 --
 
 INSERT INTO `complaintremark` (`id`, `complaintNumber`, `status`, `remark`, `remarkDate`) VALUES
-(1, 1, 'in process', 'still in progress', '2021-05-30 15:22:08'),
-(2, 8, 'in process', 'testing', '2021-06-01 20:35:29'),
-(3, 6, 'in process', 'investigating ', '2021-06-02 07:11:28'),
-(4, 6, 'closed', 'query resolved ', '2021-06-02 07:27:11'),
-(5, 2, 'closed', 'query resloved', '2021-06-07 17:35:23'),
-(6, 12, 'in process', 'ee', '2021-06-07 20:27:05'),
-(7, 12, 'closed', 'done', '2021-06-07 20:27:33');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `contact`
---
-
-CREATE TABLE `contact` (
-  `Id` int(11) NOT NULL,
-  `Name` varchar(250) NOT NULL,
-  `Email` varchar(50) NOT NULL,
-  `Message` varchar(500) NOT NULL,
-  `Load_Date` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `email`
---
-
-CREATE TABLE `email` (
-  `id` int(11) NOT NULL,
-  `To` varchar(250) NOT NULL,
-  `From` varchar(250) NOT NULL,
-  `First_Name` varchar(250) NOT NULL,
-  `Last_Name` varchar(250) NOT NULL,
-  `Subject` varchar(250) NOT NULL,
-  `Subject2` varchar(250) NOT NULL,
-  `Message` varchar(250) NOT NULL,
-  `Message2` text NOT NULL,
-  `Headers` varchar(250) NOT NULL,
-  `Headers2` varchar(250) NOT NULL,
-  `User` varchar(250) NOT NULL,
-  `LoadDate` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+(8, 112, 'in process', 'Currently investigating the ATM logs ', '2021-06-12 21:15:33'),
+(9, 114, 'closed', 'Good Day\r\n\r\nDelivery is on its way, please be on the lookout in the next 24 hours. \r\n\r\nPlease ensure that you check your phone regularly for delivery notifications.  \r\n\r\nRegards\r\n\r\nCCS', '2021-06-12 21:19:16');
 
 -- --------------------------------------------------------
 
@@ -154,7 +123,7 @@ INSERT INTO `management` (`id`, `username`, `password`, `updationDate`) VALUES
 
 CREATE TABLE `staff` (
   `id` int(11) NOT NULL,
-  `employee` varchar(255) DEFAULT NULL,
+  `employee` int(10) NOT NULL,
   `firstname` varchar(255) DEFAULT NULL,
   `lastname` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
@@ -172,8 +141,8 @@ CREATE TABLE `staff` (
 --
 
 INSERT INTO `staff` (`id`, `employee`, `firstname`, `lastname`, `password`, `phone`, `email`, `indicator`, `userImage`, `regDate`, `updationDate`, `status`) VALUES
-(1, '123', 'jj', 'mgidi', '$2y$10$ZAsjwgvOY2lhnxpYku7Noe3lyqRcAe/GOBmYfRkl61F.gf3Xv084m', 79, 'jj@gmail.com', '1', NULL, '2021-06-06 12:18:30', '2021-06-06 12:16:39', NULL),
-(5, '2021', 'Miehleketo', 'Mathebula', 'f925916e2754e5e03f75dd58a5733251', 793653889, 'Miehleketo93@gmail.com', '0', NULL, '2021-06-07 17:32:38', NULL, 1);
+(1, 2021, 'mm', 'mm', 'f925916e2754e5e03f75dd58a5733251', 793653889, 'mm@gmail.com', '0', NULL, '2021-06-07 17:32:38', NULL, 1),
+(6, 2020, 'Test', 'Testing', 'f925916e2754e5e03f75dd58a5733251', 1234567890, 'testing@gmail.com', '0', NULL, '2021-06-13 18:20:23', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -213,9 +182,16 @@ CREATE TABLE `state` (
 --
 
 INSERT INTO `state` (`id`, `stateName`, `stateDescription`, `postingDate`, `updationDate`) VALUES
-(1, 'Centurion', 'Gauteng', '2021-05-24 17:55:55', ''),
-(2, 'Tembisa', 'Gauteng', '2021-05-30 15:16:32', ''),
-(3, 'Giyani', 'Limpopo', '2021-05-30 15:17:12', '');
+(1, 'Polokwane', 'Limpopo', '2021-06-12 20:40:14', ''),
+(2, 'Witbank', 'Mpumalang', '2021-06-12 20:45:46', ''),
+(3, 'Tshwane', 'Gauteng', '2021-06-12 20:45:46', ''),
+(4, 'Bloemfontein', 'Freestate', '2021-06-12 20:45:46', ''),
+(5, 'Mahikeng', 'Northwest', '2021-06-12 20:45:46', ''),
+(6, 'Durban', 'Kwazulu-Natal', '2021-06-12 20:45:46', ''),
+(7, 'Gqeberha', 'Eastern Cape', '2021-06-12 20:45:46', ''),
+(8, 'Kimberly', 'Northen Cape', '2021-06-12 20:45:46', ''),
+(9, 'CapeTown', 'Western Cap', '2021-06-12 20:45:46', ''),
+(10, 'Johannesburg', 'Gauteng', '2021-06-12 20:45:46', '');
 
 -- --------------------------------------------------------
 
@@ -236,10 +212,59 @@ CREATE TABLE `subcategory` (
 --
 
 INSERT INTO `subcategory` (`id`, `categoryid`, `subcategory`, `creationDate`, `updationDate`) VALUES
-(1, 1, 'Online Shopping', '2021-05-30 15:17:48', ''),
-(2, 1, 'Delivery', '2021-05-30 15:18:03', ''),
-(4, 3, 'E-wllaet', '2021-03-28 05:11:20', '0000-00-00 00:00:00'),
-(5, 4, 'other', '2021-04-24 05:06:44', '2021-04-24 07:21:38');
+(1, 1, 'Cash Withdrawls', '2021-06-12 20:22:03', ''),
+(2, 1, 'Cardless Transactions', '2021-06-12 20:22:03', ''),
+(3, 1, 'Card Transactions', '2021-06-12 20:22:03', ''),
+(4, 1, 'eCashSend', '2021-06-12 20:22:03', ''),
+(5, 1, 'Double Transactions', '2021-06-12 20:22:03', ''),
+(6, 1, 'Cash Reversals', '2021-06-12 20:22:03', ''),
+(7, 2, 'Card', '2021-06-12 20:22:03', ''),
+(8, 2, 'New Accounts', '2021-06-12 20:22:03', ''),
+(9, 2, 'Banking Fees', '2021-06-12 20:22:03', ''),
+(10, 2, 'Debit Orders', '2021-06-12 20:22:04', ''),
+(11, 2, 'Account Statements', '2021-06-12 20:22:04', ''),
+(13, 3, 'Mobile Banking', '2021-06-12 20:22:04', ''),
+(14, 3, 'Internet Banking', '2021-06-12 20:22:04', ''),
+(15, 3, 'Telephone Banking', '2021-06-12 20:22:04', ''),
+(16, 3, 'ATM Banking', '2021-06-12 20:22:04', ''),
+(17, 3, 'Branch Banking', '2021-06-12 20:22:04', ''),
+(18, 4, 'Tax-Free Investment', '2021-06-12 20:22:04', ''),
+(19, 4, 'Unit-Trust', '2021-06-12 20:22:04', ''),
+(20, 4, 'Savings', '2021-06-12 20:22:04', ''),
+(21, 4, 'Cash Investment', '2021-06-12 20:22:04', ''),
+(22, 4, 'Off-shore Investment', '2021-06-12 20:22:04', ''),
+(23, 5, 'Global Account', '2021-06-12 20:22:04', ''),
+(24, 5, 'Stock Broking', '2021-06-12 20:22:04', ''),
+(26, 5, 'International Trustees', '2021-06-12 20:22:04', ''),
+(27, 6, 'Education', '2021-06-12 20:22:04', ''),
+(28, 6, 'Retirement', '2021-06-12 20:22:04', ''),
+(29, 6, 'Estate Planning', '2021-06-12 20:22:04', ''),
+(30, 6, 'Employee Benefits', '2021-06-12 20:22:04', ''),
+(31, 6, 'Emergencies', '2021-06-12 20:22:04', ''),
+(32, 7, 'Home Loan', '2021-06-12 20:36:00', ''),
+(33, 7, 'Car Loan', '2021-06-12 20:36:00', ''),
+(34, 7, 'Personal Loan', '2021-06-12 20:36:01', ''),
+(35, 7, 'Revolving Loan', '2021-06-12 20:36:01', ''),
+(36, 7, 'Credit Card', '2021-06-12 20:36:01', ''),
+(37, 7, 'Overdraft', '2021-06-12 20:36:01', ''),
+(38, 7, 'Temporary Loan', '2021-06-12 20:36:01', ''),
+(39, 7, 'Student Loan', '2021-06-12 20:36:01', ''),
+(40, 8, 'Imports/Exports', '2021-06-12 20:36:01', ''),
+(41, 8, 'Foreign Exchange', '2021-06-12 20:36:01', ''),
+(42, 9, 'Youth Account', '2021-06-12 20:36:01', ''),
+(43, 9, 'University Funds', '2021-06-12 20:36:01', ''),
+(44, 9, 'Young Professionals', '2021-06-12 20:36:01', ''),
+(45, 9, 'Will', '2021-06-12 20:36:01', ''),
+(46, 9, 'Insurance', '2021-06-12 20:36:01', ''),
+(47, 10, 'Rewards Benefits', '2021-06-12 20:36:01', ''),
+(48, 10, 'Rewards Amount', '2021-06-12 20:36:01', ''),
+(49, 10, 'Rewards Qualifications', '2021-06-12 20:36:01', ''),
+(50, 10, 'Rewards Account', '2021-06-12 20:36:02', ''),
+(51, 11, 'Car Insurance', '2021-06-12 20:39:08', ''),
+(52, 11, 'Home Insurance', '2021-06-12 20:39:09', ''),
+(53, 11, 'Life Insurance', '2021-06-12 20:39:09', ''),
+(54, 11, 'Income Protector', '2021-06-12 20:39:09', ''),
+(55, 11, 'Credit Insurance', '2021-06-12 20:39:09', '');
 
 -- --------------------------------------------------------
 
@@ -268,30 +293,15 @@ CREATE TABLE `tblcomplaints` (
 --
 
 INSERT INTO `tblcomplaints` (`complaintNumber`, `userId`, `category`, `subcategory`, `complaintType`, `state`, `noc`, `complaintDetails`, `complaintFile`, `regDate`, `status`, `Employee_Id`, `lastUpdationDate`) VALUES
-(1, 2, 1, 'Online Shopping', ' Complaint', 'Polokwane', 'Refund', 'Double deduction ', '', '2021-05-30 15:20:30', 'in process', '2021', '2021-06-07 17:34:28'),
-(2, 2, 1, 'Online SHopping', 'General Query', 'Punjab', 'testing', 'sample text for demo', '', '2017-03-30 15:05:56', 'closed', '2021', '2021-06-07 17:35:23'),
-(3, 2, 1, 'Online SHopping', ' Complaint', 'Punjab', 'ferwekt lwentgwewt', 'wetwetwe', '', '2017-03-30 15:07:51', 'in process', '123', '2021-06-02 07:10:15'),
-(4, 2, 1, 'E-wllaet', 'General Query', 'Haryana', 'lkdlsfklsdf', 'fdsf,msd,f  f f', '', '2017-03-30 15:13:14', 'closed', '', '2021-05-31 05:58:27'),
-(5, 2, 1, 'E-wllaet', ' Complaint', 'Punjab', 'bgfhfgh', 'hfghfgh', '', '2017-03-30 15:14:55', 'in process', '5', '2021-06-07 17:59:28'),
-(6, 2, 1, 'E-wllaet', ' Complaint', 'Punjab', 'bgfhfgh', 'hfghfgh', '', '2017-03-30 15:20:16', 'closed', '120', '2021-06-02 07:27:11'),
-(7, 2, 1, 'E-wllaet', ' Complaint', 'Punjab', 'bgfhfgh', 'hfghfgh', '', '2017-03-30 15:20:56', NULL, '123', '2021-06-06 12:35:11'),
-(8, 2, 1, 'E-wllaet', ' Complaint', 'Punjab', 'bgfhfgh', 'hfghfgh', '', '2017-03-30 15:23:05', 'in process', '', '2021-06-01 20:35:29'),
-(9, 2, 1, 'E-wllaet', ' Complaint', 'Punjab', 'bgfhfgh', 'hfghfgh', '', '2017-03-30 15:25:09', 'in process', '', '2021-05-31 05:58:27'),
-(10, 2, 1, 'E-wllaet', ' Complaint', 'Punjab', 'bgfhfgh', 'hfghfgh', '', '2017-03-30 15:27:24', NULL, '2021', '2021-06-07 17:34:14'),
-(11, 2, 1, 'Online SHopping', 'General Query', 'Haryana', 'dsflsdlflsdf', 'fsdfsdfsdf', '', '2017-03-30 15:36:32', NULL, '5', '2021-06-07 17:50:04'),
-(12, 2, 1, 'Online SHopping', 'General Query', 'Haryana', 'dsflsdlflsdf', 'fsdfsdfsdf', '', '2017-03-30 15:37:09', 'closed', '5', '2021-06-07 20:27:33'),
-(13, 2, 1, 'Online SHopping', 'General Query', 'Haryana', 'dsflsdlflsdf', 'fsdfsdfsdf', '', '2017-03-30 15:39:57', NULL, '', '2021-05-31 05:58:27'),
-(14, 2, 1, 'Online SHopping', ' Complaint', 'Haryana', 'vcxvxcvxcv', 'cvcx', '', '2017-03-30 15:41:19', NULL, '', '2021-05-31 05:58:27'),
-(15, 2, 1, 'E-wllaet', 'General Query', 'Punjab', 'dsfsd', 'fsdfsdf', '', '2017-03-30 15:42:38', NULL, '', '2021-05-31 05:58:27'),
-(16, 2, 1, 'E-wllaet', 'General Query', 'Punjab', 'dsfsd', 'fsdfsdf', '', '2017-03-30 23:54:07', NULL, '', '2021-05-31 05:58:27'),
-(17, 2, 1, 'E-wllaet', ' Complaint', 'fsdfs', 'regarding refund', 'test test', '', '2017-06-11 08:57:49', NULL, '', '2021-05-31 05:58:27'),
-(18, 2, 1, 'Online SHopping', ' Complaint', 'Uttar Pradesh', 'yhytr', 'rtytry', '', '2017-06-11 09:08:47', NULL, '', '2021-05-31 05:58:27'),
-(19, 2, 1, 'Online SHopping', ' Complaint', 'Uttar Pradesh', 'regarding refund', 'Test@123 dfds fsd fs gs gsd g sg g g sgstwerwe ewtw tw', '', '2017-06-11 09:15:24', 'closed', '', '2021-05-31 05:58:27'),
-(20, 2, 1, 'E-wllaet', 'General Query', 'fsdfs', 'sdgsdg', 'gdgsdgsd', '', '2018-05-24 16:26:23', NULL, '', '2021-05-31 05:58:27'),
-(21, 2, 1, 'Online SHopping', 'General Query', 'Uttar Pradesh', 'csdf', 'fsdfs', '', '2018-05-24 16:26:55', NULL, '', '2021-05-31 05:58:27'),
-(22, 2, 1, 'Online SHopping', 'General Query', 'Uttar Pradesh', 'csdf', 'fsdfs', '', '2018-05-24 16:27:02', NULL, '', '2021-05-31 05:58:27'),
-(23, 2, 1, 'E-wllaet', ' Complaint', 'Delhi', 'This is sample text for testing.', 'This is sample text for testing.', '2a09969b-c3d5-467b-82b0-2cf5aeb903eb_200x200.png', '2019-06-24 08:31:19', 'closed', '', '2021-05-31 05:58:27'),
-(111, 2, 1, 'E-wllaet', 'General Query', 'Punjab', 'test demo', 'test demo test demo test demotest demotest demotest demotest demotest demotest demotest demotest demo', '', '2017-03-30 14:52:40', 'closed', '', '2021-05-31 05:58:27');
+(1, 3, 1, 'Cash Withdrawls', ' Complaint', 'Polokwane', 'General', 'Hi, \r\n\r\nI tried to withdrawal money from one of the ATMs in Polokwane Complex, \r\n\r\nThe ATM went offline during the process and later reflected that the money was withdrawn from my account. \r\n\r\nsee slips attached. ', 'pdf-test.pdf', '2021-06-12 21:02:50', 'in process', '1', '2021-06-13 18:37:56'),
+(2, 3, 2, 'Card', 'General Query', 'Witbank', 'General', 'Good Day, \r\n\r\nI have not yet received my bank card since applied two month ago.\r\n\r\n', 'page_1.jpg', '2021-06-12 21:06:06', NULL, '1', '2021-06-13 18:38:08'),
+(3, 3, 2, 'Card', 'General Query', 'Witbank', 'General', 'Good Day, \r\n\r\nI have not yet received my bank card since applied two month ago.\r\n\r\n', 'page_1.jpg', '2021-06-12 21:07:01', 'closed', '1', '2021-06-13 18:38:18'),
+(4, 4, 9, 'Will', ' Complaint', 'Gqeberha', 'General', 'Hi, My Will is not reflecting on my banking portal ', 'Sample-doc-file-5000kb.doc', '2021-06-13 18:22:43', NULL, '', '2021-06-13 18:38:28'),
+(5, 4, 6, 'Estate Planning', ' Complaint', 'CapeTown', 'General', 'My Estate reflects on arrear as of today', '', '2021-06-13 18:24:20', NULL, '', '2021-06-13 18:38:40'),
+(6, 4, 8, 'Foreign Exchange', 'General Query', 'Mahikeng', 'General', 'How much is the dollar against the rand ', 'page_1.jpg', '2021-06-13 18:23:44', NULL, '', '2021-06-13 18:38:50'),
+(7, 3, 4, 'Unit-Trust', ' Complaint', 'Durban', 'General', 'Unit Trust did not grow as expected last month ', '', '2021-06-13 18:26:10', NULL, '', '2021-06-13 18:38:59'),
+(8, 3, 7, 'Credit Card', ' Complaint', 'Johannesburg', 'General', 'Closed my credit card two month ago, but today i was charged an amount of R2000 for credit fee. ', '', '2021-06-13 18:27:58', NULL, '', '2021-06-13 18:39:10'),
+(9, 2, 6, 'Education', 'General Query', 'Durban', 'General', 'My account was deducted last month, i have now closed the education account, \r\n\r\nplease advice when will this reflect on your side? ', '', '2021-06-13 18:30:27', NULL, '', '2021-06-13 18:39:21');
 
 -- --------------------------------------------------------
 
@@ -314,43 +324,39 @@ CREATE TABLE `userlog` (
 --
 
 INSERT INTO `userlog` (`id`, `uid`, `username`, `userip`, `loginTime`, `logout`, `status`) VALUES
-(1, 0, 'john@gmail.com', 0x3a3a3100000000000000000000000000, '2020-05-08 14:14:43', '', 0),
-(2, 1, 'john@gmail.com', 0x3a3a3100000000000000000000000000, '2020-05-08 14:14:50', '08-05-2020 07:44:51 PM', 1),
-(3, 1, 'john@gmail.com', 0x3a3a3100000000000000000000000000, '2020-05-08 14:16:30', '', 1),
-(4, 2, 'miehleketo93@gmail.com', 0x3a3a3100000000000000000000000000, '2021-05-19 11:04:39', '19-05-2021 01:05:06 PM', 1),
-(5, 0, 'miehleketo93@gmail.com', 0x3a3a3100000000000000000000000000, '2021-05-30 13:47:56', '', 0),
-(6, 2, 'miehleketo93@gmail.com', 0x3a3a3100000000000000000000000000, '2021-05-30 13:48:49', '30-05-2021 03:49:59 PM', 1),
-(7, 2, 'miehleketo93@gmail.com', 0x3a3a3100000000000000000000000000, '2021-05-30 13:52:33', '30-05-2021 03:52:35 PM', 1),
-(8, 2, 'miehleketo93@gmail.com', 0x3a3a3100000000000000000000000000, '2021-05-30 13:53:26', '30-05-2021 03:53:27 PM', 1),
-(9, 0, 'miehleketo93@gmail.com', 0x3a3a3100000000000000000000000000, '2021-05-30 15:12:13', '', 0),
-(10, 0, 'miehleketo93@gmail.com', 0x3a3a3100000000000000000000000000, '2021-05-30 15:12:38', '', 0),
-(11, 0, 'miehleketo93@gmail.com', 0x3a3a3100000000000000000000000000, '2021-05-30 15:12:43', '', 0),
-(12, 2, 'miehleketo93@gmail.com', 0x3a3a3100000000000000000000000000, '2021-05-30 15:12:47', '30-05-2021 05:13:59 PM', 1),
-(13, 2, 'miehleketo93@gmail.com', 0x3a3a3100000000000000000000000000, '2021-05-30 15:19:20', '30-05-2021 05:20:59 PM', 1),
-(14, 0, '1', 0x3a3a3100000000000000000000000000, '2021-06-06 11:30:31', '', 0),
-(15, 0, '', 0x3a3a3100000000000000000000000000, '2021-06-06 13:50:12', '', 0),
-(16, 0, 'jj@mgid', 0x3a3a3100000000000000000000000000, '2021-06-06 13:52:07', '', 1),
-(17, 0, '123', 0x3a3a3100000000000000000000000000, '2021-06-06 14:41:36', '', 0),
-(18, 0, 'jj@mgid', 0x3a3a3100000000000000000000000000, '2021-06-06 14:41:55', '', 1),
-(19, 0, 'jj@mgid', 0x3a3a3100000000000000000000000000, '2021-06-06 15:40:14', '', 1),
-(20, 0, 'miehleketo93@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-06 15:57:29', '', 0),
-(21, 0, 'miehleketo93@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-06 15:57:34', '', 0),
-(22, 0, 'miehleketo93@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-06 15:57:43', '', 0),
-(23, 2, 'miehleketo93@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-06 15:58:17', '', 1),
-(24, 0, 'jj@mgid', 0x3a3a3100000000000000000000000000, '2021-06-07 17:14:32', '', 1),
-(25, 0, 'miehleketo93@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-07 17:28:53', '', 1),
-(26, 5, 'miehleketo93@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-07 17:32:51', '', 1),
-(27, 5, 'miehleketo93@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-07 17:35:55', '', 1),
-(28, 5, 'miehleketo93@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-07 17:43:14', '', 1),
-(29, 5, 'miehleketo93@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-07 17:45:16', '', 1),
-(30, 5, 'miehleketo93@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-07 17:52:28', '', 1),
-(31, 5, 'miehleketo93@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-07 17:59:48', '', 1),
-(32, 2, 'miehleketo93@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-07 19:32:39', '', 1),
-(33, 5, 'miehleketo93@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-07 19:47:04', '', 1),
-(34, 5, 'miehleketo93@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-07 19:47:19', '', 1),
-(35, 5, 'miehleketo93@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-07 19:48:34', '', 1),
-(36, 5, 'miehleketo93@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-07 20:03:37', '', 1),
-(37, 5, 'miehleketo93@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-07 20:05:06', '', 1);
+(26, 5, 'mm@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-07 17:32:51', '', 1),
+(27, 5, 'mm@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-07 17:35:55', '', 1),
+(28, 5, 'mm@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-07 17:43:14', '', 1),
+(29, 5, 'mm@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-07 17:45:16', '', 1),
+(30, 5, 'mm@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-07 17:52:28', '', 1),
+(31, 5, 'mm@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-07 17:59:48', '', 1),
+(32, 2, 'mm@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-07 19:32:39', '', 1),
+(33, 5, 'mm@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-07 19:47:04', '', 1),
+(34, 5, 'mm@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-07 19:47:19', '', 1),
+(35, 5, 'mm@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-07 19:48:34', '', 1),
+(36, 5, 'mm@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-07 20:03:37', '', 1),
+(37, 5, 'mm@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-07 20:05:06', '', 1),
+(38, 5, 'mm@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-10 14:25:10', '', 1),
+(39, 5, 'mm@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-12 11:16:26', '', 1),
+(40, 5, 'mm@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-12 11:41:02', '', 1),
+(41, 5, 'mm@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-12 16:28:45', '', 1),
+(42, 5, 'mm@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-12 18:34:10', '', 1),
+(43, 3, 'mm@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-12 20:50:27', '12-06-2021 11:07:57 PM', 1),
+(44, 1, 'mm@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-12 21:08:09', '', 1),
+(45, 1, 'mm@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-12 21:12:28', '', 1),
+(46, 1, 'mm@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-13 15:42:23', '', 1),
+(47, 0, 'nkati@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-13 15:48:32', '', 0),
+(48, 3, 'nkati@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-13 15:48:46', '', 1),
+(49, 1, 'mm@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-13 16:03:11', '13-06-2021 06:53:43 PM', 1),
+(50, 1, 'mm@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-13 17:05:03', '', 1),
+(51, 1, 'mm@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-13 17:14:51', '', 1),
+(52, 6, 'testing@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-13 18:20:37', '', 1),
+(53, 4, 'mie@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-13 18:21:57', '13-06-2021 08:24:28 PM', 1),
+(54, 3, 'nkati@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-13 18:25:35', '13-06-2021 08:28:04 PM', 1),
+(55, 0, 'mm@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-13 18:28:20', '', 0),
+(56, 0, 'mm@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-13 18:28:44', '', 0),
+(57, 2, 'mm@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-13 18:29:14', '13-06-2021 08:36:49 PM', 1),
+(58, 4, 'mie@gmail.com', 0x3a3a3100000000000000000000000000, '2021-06-13 18:37:00', '', 1);
 
 -- --------------------------------------------------------
 
@@ -379,7 +385,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `fullName`, `userEmail`, `password`, `contactNo`, `address`, `State`, `country`, `pincode`, `userImage`, `regDate`, `updationDate`, `status`) VALUES
-(2, 'jj', 'miehleketo93@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', 79, NULL, NULL, NULL, NULL, NULL, '2021-05-19 11:04:18', '2021-06-06 15:58:12', 1);
+(2, 'jj', 'mm@gmail.com', 'f925916e2754e5e03f75dd58a5733251', 79, NULL, NULL, NULL, NULL, NULL, '2021-05-19 11:04:18', '2021-06-13 18:29:07', 1),
+(3, 'nk', 'nkati@gmail.com', 'f925916e2754e5e03f75dd58a5733251', 793653889, NULL, NULL, NULL, NULL, NULL, '2021-06-12 20:50:06', '0000-00-00 00:00:00', 1),
+(4, 'mie', 'mie@gmail.com', 'f925916e2754e5e03f75dd58a5733251', 12345, NULL, NULL, NULL, NULL, NULL, '2021-06-13 18:21:42', '0000-00-00 00:00:00', 1);
 
 --
 -- Indexes for dumped tables
@@ -395,18 +403,6 @@ ALTER TABLE `category`
 -- Indexes for table `complaintremark`
 --
 ALTER TABLE `complaintremark`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `contact`
---
-ALTER TABLE `contact`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `email`
---
-ALTER TABLE `email`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -465,67 +461,55 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `complaintremark`
 --
 ALTER TABLE `complaintremark`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT for table `contact`
---
-ALTER TABLE `contact`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `email`
---
-ALTER TABLE `email`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `management`
 --
 ALTER TABLE `management`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `state`
 --
 ALTER TABLE `state`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `subcategory`
 --
 ALTER TABLE `subcategory`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT for table `tblcomplaints`
 --
 ALTER TABLE `tblcomplaints`
-  MODIFY `complaintNumber` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
+  MODIFY `complaintNumber` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
 
 --
 -- AUTO_INCREMENT for table `userlog`
 --
 ALTER TABLE `userlog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
