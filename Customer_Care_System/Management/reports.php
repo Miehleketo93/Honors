@@ -22,10 +22,10 @@ line-height:20px;
 <h2 class="xh2">
 Complain Status Details
 <ul>
-<a href="view.php?mod=admin&view=repo&id=open"><li class="xli">Open Complains</li></a>
-<a href="view.php?mod=admin&view=repo&id=close"><li class="xli">Close Complains</li></a>
-<a href="view.php?mod=admin&view=repo&id=working"><li class="xli">Working Complains</li></a>
-<a href="view.php?mod=admin&view=repo&id=assign"><li class="xli">Assigned Complains</li></a>
+<a href="report-notprocess-complaint.php?mod=admin&view=repo&id=close"><li class="xli">Open Complains</li></a>
+<a href="report-closed-complaint.php?mod=admin&view=repo&id=close"><li class="xli">Close Complains</li></a>
+<a href="report-inprocess-complaint.php?mod=admin&view=repo&id=working"><li class="xli">Working Complains</li></a>
+<a href="report-assigned-complaints.php?mod=admin&view=repo&id=assign"><li class="xli">Assigned Complains</li></a>
 </ul>
 </h2>
 </div>
