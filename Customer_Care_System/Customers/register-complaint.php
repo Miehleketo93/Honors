@@ -136,7 +136,7 @@ while ($rw=mysqli_fetch_array($sql)) {
                 </select> 
 </div>
 
-<label class="col-sm-2 col-sm-2 control-label">State</label>
+<label class="col-sm-2 col-sm-2 control-label">City</label>
 <div class="col-sm-4">
 <select name="state" required="required" class="form-control">
 <option value="">Select State</option>
@@ -156,7 +156,7 @@ while ($rw=mysqli_fetch_array($sql)) {
 <div class="form-group">
 <label class="col-sm-2 col-sm-2 control-label">Nature of Complaint</label>
 <div class="col-sm-4">
-<input type="text" name="noc" required="required" value="" required="" class="form-control">
+<input type="text" name="noc" required="required" value="General" required="" class="form-control">
 </div>
 
 </div>
