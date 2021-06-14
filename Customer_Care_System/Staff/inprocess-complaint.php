@@ -75,6 +75,7 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 <tbody>
 <?php 
 $st='in process';
+$_SESSION["id"] = "employee";
 $query=mysqli_query($con,"select tblcomplaints.* ,CONCAT(staff.firstname,' ',staff.lastname) as Staff_Name,date(tblcomplaints.regDate) as DateLogged
 from tblcomplaints 
 left join staff on  tblcomplaints.Employee_Id = staff.id

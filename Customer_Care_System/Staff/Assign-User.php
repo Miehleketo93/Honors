@@ -86,7 +86,7 @@ while($rw=mysqli_fetch_array($ret))
        while($row=mysqli_fetch_array($query))
      {?>
 
-      <option value="<?php echo $row['id'];?>"><?php echo $row['name'];?></option>
+      <option value="<?php echo $row['employee'];?>"><?php echo $row['name'];?></option>
      <?php } ?>
 
     

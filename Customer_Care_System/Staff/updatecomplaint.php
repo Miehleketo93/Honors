@@ -19,26 +19,28 @@ echo "<script>alert('Complaint details updated successfully');</script>";
 
   }
 
+
  ?>
-<script language="javascript" type="text/javascript">
-function f2()
-{
-window.close();
-}ser
-function f3()
-{
-window.print(); 
-}
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+  
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Staff| Update Complaint</title>
+        <link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link type="text/css" href="css/theme.css" rel="stylesheet">
+        <link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
+        <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
+        <script language="javascript" type="text/javascript">
 </script>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>User Profile</title>
-<link href="style.css" rel="stylesheet" type="text/css" />
-<link href="anuj.css" rel="stylesheet" type="text/css">
+
 </head>
 <body>
+
+<?php include('connection/header.php');?>
 
 <div style="margin-left:50px;">
  <form name="updateticket" id="updatecomplaint" method="post"> 
@@ -81,7 +83,7 @@ window.print();
     <tr>
   <td></td>
       <td >   
-      <input name="Submit2" type="submit" class="txtbox4" value="Close this window " onClick="return f2();" style="cursor: pointer;"  /></td>
+      <input name="Submit2" type="submit" class="txtbox4" value="Close this window " onClick="self.close();" style="cursor: pointer;"  /></td>
     </tr>
    
 
@@ -94,3 +96,21 @@ window.print();
 </html>
 
      <?php } ?>
+
+     <?php include('connection/footer.php');?>
+
+	<script src="scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+	<script src="scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+	<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="scripts/flot/jquery.flot.js" type="text/javascript"></script>
+	<script src="scripts/datatables/jquery.dataTables.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('.datatable-1').dataTable();
+			$('.dataTables_paginate').addClass("btn-group datatable-pagination");
+			$('.dataTables_paginate > a').wrapInner('<span />');
+			$('.dataTables_paginate > a:first-child').append('<i class="icon-chevron-left shaded"></i>');
+			$('.dataTables_paginate > a:last-child').append('<i class="icon-chevron-right shaded"></i>');
+		} );
+	</script>
+</body>
