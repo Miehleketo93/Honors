@@ -35,7 +35,7 @@ window.print();
 
 
 //$cust_id = (int)$_SESSION['user_id'];
-$ret1=mysqli_query($con,"select * FROM users where id='".$_GET['uid']."'");
+$ret1=mysqli_query($con,"select * FROM users where id='".$_GET['id']."'");
 //$result = mysqli_query($ret1);
 //$i=0;
 while($row=mysqli_fetch_array($ret1)) {
