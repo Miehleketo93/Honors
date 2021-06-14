@@ -111,14 +111,14 @@ while($row=mysqli_fetch_array($query))
 <div class="control-group">
 <label class="control-label" for="basicinput">To</label>
 <div class="controls">
-<input type="text" placeholder="email"  name="to" class="span8 tip" required  value="<?php echo htmlentities($row['userEmail']);?>" >
+<input type="text" placeholder="email"  name="to" class="span8 tip" required  value="u11242796@tuks.co.za" >
 </div>
 
 
 <div class="control-group">
 <label class="control-label" for="basicinput">From</label>
 <div class="controls">
-<input type="text" placeholder="email"  name="from"  value = "u11242796@tuks.co.za" class="span8 tip" required>
+<input type="text" placeholder="email"  name="from"  value = "miehleketo93@gmail.com" class="span8 tip" required>
 </div>
 
 
