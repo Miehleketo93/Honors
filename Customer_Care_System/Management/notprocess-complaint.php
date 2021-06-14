@@ -73,7 +73,7 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 <?php 
 $query=mysqli_query($con,"select tblcomplaints.* ,CONCAT(firstname,' ',lastname) as Staff_Name,date(tblcomplaints.regDate) as DateLogged
 from tblcomplaints 
-left join staff on  tblcomplaints.Employee_Id = staff.employee
+left join staff on  tblcomplaints.Employee_Id = staff.id
 where tblcomplaints.status is null ");
 while($row=mysqli_fetch_array($query))
 {
