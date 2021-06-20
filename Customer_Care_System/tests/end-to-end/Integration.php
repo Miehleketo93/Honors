@@ -2,7 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 
-class UnitTest extends TestCase{
+class Integration extends TestCase{
 
     public function testJob() {
         require('vendor/autoload.php');
